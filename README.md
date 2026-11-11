@@ -9,6 +9,7 @@
 [![IBM Granite](https://img.shields.io/badge/IBM_Granite-3--8b--instruct-0f62fe?logo=ibm)](https://www.ibm.com/watsonx)
 [![IBM Cloud](https://img.shields.io/badge/IBM_Cloud-Lite_Free-1192e8?logo=ibmcloud)](https://cloud.ibm.com)
 [![GitHub](https://img.shields.io/badge/GitHub-Kavita--Codes%2FAICTE--Fitness--Buddy-black?logo=github)](https://github.com/Kavita-Codes/AICTE-Fitness-Buddy)
+[![PDF](https://img.shields.io/badge/📄_Project_Submission-PDF-dc2626?logo=adobeacrobatreader)](docs/AICTE-Fitness-Buddy-Submission.pdf)
 
 ---
 
@@ -27,6 +28,7 @@
 - [API Reference](#-api-reference)
 - [Role of Agentic AI](#-role-of-agentic-ai)
 - [Future Scope](#-future-scope)
+- [Project Submission PDF](#-project-submission-document)
 - [Disclaimer](#-disclaimer)
 
 ---
@@ -430,6 +432,16 @@ Key capabilities of Agentic AI in this solution:
 ## 🔗 GitHub Repository
 
 **https://github.com/Kavita-Codes/AICTE-Fitness-Buddy**
+
+## 📄 Project Submission Document
+
+> Click below to open the full IBM University Engagement project submission PDF:
+
+### [📄 Open Project Submission PDF](docs/AICTE-Fitness-Buddy-Submission.pdf)
+
+| Document | Link |
+|---|---|
+| 📋 Project Submission (PDF) | [AICTE-Fitness-Buddy-Submission.pdf](docs/AICTE-Fitness-Buddy-Submission.pdf) |
 
 ---
 
