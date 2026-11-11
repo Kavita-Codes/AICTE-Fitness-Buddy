@@ -14,3 +14,10 @@
 [2026-11-11T09:19:03] INFO     fitness_buddy.orchestrator – Routing request [session=91b83066-dc43-456e-923b-e1a33ee9ed83] → nutrition_agent (task=suggest_meal)
 [2026-11-11T09:19:18] INFO     fitness_buddy.orchestrator – Routing request [session=91b83066-dc43-456e-923b-e1a33ee9ed83] → workout_agent (task=suggest_workout)
 [2026-11-11T09:19:28] INFO     fitness_buddy.agent – Conversation history reset
+[2026-11-11T09:36:05] INFO     fitness_buddy.agent – FitnessAgent initialised – mode: knowledge-base fallback
+[2026-11-11T09:36:05] INFO     fitness_buddy.orchestrator – FitnessOrchestrator ready
+[2026-11-11T09:36:14] INFO     fitness_buddy.orchestrator – Routing request [session=99485dae-fcad-4da1-bd68-00d1a0c8a543] → motivation_agent (task=motivational_quote)
+[2026-11-11T09:36:17] INFO     fitness_buddy.orchestrator – Routing request [session=99485dae-fcad-4da1-bd68-00d1a0c8a543] → motivation_agent (task=motivational_quote)
+[2026-11-11T09:47:11] INFO     fitness_buddy.agent – FitnessAgent initialised – mode: knowledge-base fallback
+[2026-11-11T09:47:11] INFO     fitness_buddy.orchestrator – FitnessOrchestrator ready
+[2026-11-11T09:47:11] INFO     fitness_buddy.orchestrator – Routing request [session=9bdc1095-28dc-4f42-a337-ec019c535398] → workout_agent (task=suggest_workout)

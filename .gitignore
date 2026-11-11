@@ -1,2 +1,35 @@
+# Environment files with real secrets – NEVER commit
 .env
 .env.local
+.env.*.local
+
+# Streamlit secrets with real keys – NEVER commit
+# (Add actual secrets in Streamlit Cloud dashboard instead)
+.streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Logs
+logs/*.log
+
+# IDE
+.vscode/settings.json
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
