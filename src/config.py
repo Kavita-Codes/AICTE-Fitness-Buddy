@@ -1,16 +1,37 @@
 """
 src/config.py – Centralised application configuration via pydantic-settings.
 IBM watsonx.ai / Granite (IBM Cloud Lite) edition.
-All settings are read from environment variables (or .env file).
+
+Credential resolution order:
+  1. Streamlit secrets (st.secrets) – used when deployed on Streamlit Cloud
+  2. Environment variables / .env file – used locally
 """
 
 from __future__ import annotations
 
-from functools import lru_cache
+import os
 from typing import List
 
 from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+def _inject_streamlit_secrets() -> None:
+    """
+    Copy Streamlit secrets into os.environ so pydantic-settings can read them.
+    Safe to call even when streamlit is not installed or secrets are not set.
+    """
+    try:
+        import streamlit as st
+        secrets = dict(st.secrets)
+        for key, value in secrets.items():
+            if isinstance(value, str) and key not in os.environ:
+                os.environ[key.upper()] = value
+    except Exception:
+        pass  # Not running under Streamlit, or no secrets configured
+
+
+_inject_streamlit_secrets()
 
 
 class Settings(BaseSettings):
@@ -113,7 +134,6 @@ class Settings(BaseSettings):
         }
 
 
-@lru_cache(maxsize=1)
 def get_settings() -> Settings:
-    """Return a cached singleton Settings instance."""
+    """Return a Settings instance (re-reads each call to pick up Streamlit secrets)."""
     return Settings()
