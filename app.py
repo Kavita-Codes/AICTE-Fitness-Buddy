@@ -41,57 +41,116 @@ st.set_page_config(
 # ---------------------------------------------------------------------------
 st.markdown("""
 <style>
-  /* IBM-inspired colour palette */
-  :root {
-    --ibm-blue: #0f62fe;
-    --ibm-blue-light: #4589ff;
-    --ibm-blue-dark: #002d9c;
-    --ibm-green: #198038;
-    --ibm-red: #da1e28;
-    --ibm-yellow: #f1c21b;
-    --ibm-purple: #6929c4;
-    --ibm-teal: #007d79;
-    --ibm-gray-10: #f4f4f4;
-    --ibm-gray-90: #21272a;
+  /* ── Global: force dark text on white background ── */
+  .stApp, .main .block-container {
+    color: #1f2328 !important;
   }
+  .stApp p, .stApp label, .stApp span, .stApp li,
+  .stApp h1, .stApp h2, .stApp h3, .stApp h4,
+  .stApp .stMarkdown, .stApp .stText {
+    color: #1f2328 !important;
+  }
+  /* Streamlit caption / small text */
+  .stApp .stCaption, .stApp small { color: #57606a !important; }
+
+  /* ── Sidebar: dark navy background, white text ── */
   [data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #001141 0%, #0043ce 100%);
+    background: linear-gradient(180deg, #001141 0%, #0043ce 100%) !important;
   }
-  [data-testid="stSidebar"] * { color: #ffffff !important; }
-  [data-testid="stSidebar"] .stRadio label { font-size: 1rem; }
+  /* All direct text in sidebar → white */
+  [data-testid="stSidebar"] p,
+  [data-testid="stSidebar"] label,
+  [data-testid="stSidebar"] span,
+  [data-testid="stSidebar"] div,
+  [data-testid="stSidebar"] small,
+  [data-testid="stSidebar"] .stRadio label,
+  [data-testid="stSidebar"] .stCaption,
+  [data-testid="stSidebar"] h1,
+  [data-testid="stSidebar"] h2,
+  [data-testid="stSidebar"] h3,
+  [data-testid="stSidebar"] .stMarkdown {
+    color: #ffffff !important;
+  }
+  /* Sidebar alert boxes (success/warning) – keep their own bg, darken text */
+  [data-testid="stSidebar"] .stAlert { border-radius: 6px; }
+  [data-testid="stSidebar"] .stAlert p,
+  [data-testid="stSidebar"] .stAlert span,
+  [data-testid="stSidebar"] .stAlert div { color: #1f2328 !important; }
+  /* Sidebar button */
+  [data-testid="stSidebar"] .stButton button {
+    background: rgba(255,255,255,0.15) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255,255,255,0.4) !important;
+    border-radius: 6px;
+  }
+  [data-testid="stSidebar"] .stButton button:hover {
+    background: rgba(255,255,255,0.25) !important;
+  }
+  /* Sidebar divider */
+  [data-testid="stSidebar"] hr { border-color: rgba(255,255,255,0.25) !important; }
+
+  /* ── Main header banner ── */
   .main-header {
     background: linear-gradient(135deg, #0f62fe 0%, #6929c4 100%);
-    color: white;
+    color: #ffffff !important;
     padding: 1.5rem 2rem;
     border-radius: 12px;
     margin-bottom: 1.5rem;
     text-align: center;
   }
-  .main-header h1 { font-size: 2.2rem; margin: 0; }
-  .main-header p  { margin: 0.3rem 0 0; opacity: 0.9; }
+  .main-header h1, .main-header p { color: #ffffff !important; margin: 0; }
+  .main-header h1 { font-size: 2.2rem; }
+  .main-header p  { margin-top: 0.3rem; opacity: 0.9; }
+
+  /* ── Metric card ── */
   .metric-card {
     background: #f4f4f4;
     border-left: 4px solid #0f62fe;
     border-radius: 8px;
     padding: 1rem 1.2rem;
     margin: 0.5rem 0;
+    color: #1f2328 !important;
   }
+  .metric-card, .metric-card * { color: #1f2328 !important; }
+
+  /* ── Guardrail badges ── */
   .guard-badge-ok  { background:#d1e8d1; color:#0a6640 !important; border-radius:4px; padding:2px 8px; font-size:0.8rem; font-weight:600; }
   .guard-badge-off { background:#f0e0e0; color:#9c1c1c !important; border-radius:4px; padding:2px 8px; font-size:0.8rem; font-weight:600; }
-  .chat-user     { background:#e8f4fd; color:#1f2328 !important; border-radius:12px 12px 2px 12px; padding:0.8rem 1rem; margin:0.4rem 0; }
-  .chat-user *   { color:#1f2328 !important; }
-  .chat-assistant{ background:#f4f4f4; color:#1f2328 !important; border-radius:12px 12px 12px 2px; padding:0.8rem 1rem; margin:0.4rem 0; }
-  .chat-assistant *{ color:#1f2328 !important; }
-  .metric-card   { color:#1f2328 !important; }
-  .metric-card * { color:#1f2328 !important; }
-  .ibm-badge {
-    display:inline-block; background:#0f62fe; color:#fff;
-    border-radius:4px; padding:2px 10px; font-size:0.75rem; font-weight:700;
-    letter-spacing:0.05em;
+
+  /* ── Chat bubbles ── */
+  .chat-user {
+    background: #e8f4fd;
+    color: #1f2328 !important;
+    border-radius: 12px 12px 2px 12px;
+    padding: 0.8rem 1rem;
+    margin: 0.4rem 0;
   }
-  .chip-blocked { background:#ffd7d9; color:#a2191f; border-radius:12px; padding:2px 10px; font-size:0.78rem; margin:2px; display:inline-block; }
-  .chip-warn    { background:#fef1c2; color:#8e6a00; border-radius:12px; padding:2px 10px; font-size:0.78rem; margin:2px; display:inline-block; }
-  .chip-ok      { background:#d1e8d1; color:#0a6640; border-radius:12px; padding:2px 10px; font-size:0.78rem; margin:2px; display:inline-block; }
+  .chat-user, .chat-user * { color: #1f2328 !important; }
+  .chat-assistant {
+    background: #f4f4f4;
+    color: #1f2328 !important;
+    border-radius: 12px 12px 12px 2px;
+    padding: 0.8rem 1rem;
+    margin: 0.4rem 0;
+  }
+  .chat-assistant, .chat-assistant * { color: #1f2328 !important; }
+
+  /* ── IBM badge ── */
+  .ibm-badge {
+    display: inline-block;
+    background: #0f62fe;
+    color: #ffffff !important;
+    border-radius: 4px;
+    padding: 2px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── Inline chips ── */
+  .chip-blocked { background:#ffd7d9; color:#a2191f !important; border-radius:12px; padding:2px 10px; font-size:0.78rem; margin:2px; display:inline-block; }
+  .chip-warn    { background:#fef1c2; color:#8e6a00 !important; border-radius:12px; padding:2px 10px; font-size:0.78rem; margin:2px; display:inline-block; }
+  .chip-ok      { background:#d1e8d1; color:#0a6640 !important; border-radius:12px; padding:2px 10px; font-size:0.78rem; margin:2px; display:inline-block; }
 </style>
 """, unsafe_allow_html=True)
 
